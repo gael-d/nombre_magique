@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>caisse</title>
+        <script>
+            function majuscule()
+            {
+                saisie = document.getElementById( 'nom' ).value; 
+                saisie = saisie.toUpperCase();
+                document.getElementById( 'resultat' ).innerHTML = saisie; 
+            }
+            
+            function calcule()
+            {
+                saisie = document.getElementById( 'saisie' ).value; 
+                resultat = eval( saisie ) 
+                document.getElementById( 'res' ).innerHTML = resultat; 
+            }
+
+            function capitalizeFirstLetter(string) {
+                 return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+
+            function testNbrInString( string ) 
+            {
+                for (var i = 0; i < saisie.length; i++)
+                {
+                    car = saisie[i];
+                    if ( ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ].includes( car )  )
+                        return true;
+                }
+                return false;
+            }
+
+            function magie()
+            {
+                saisie = document.getElementById( 'motMagique' ).value; 
+                saisie = saisie.trim();
+                console.log( saisie );
+                if ( saisie != '' && !testNbrInString( saisie ))
+                {
+                    saisie = saisie.toLowerCase();
+                    saisie = capitalizeFirstLetter(saisie);
+                    console.log( saisie );
+
+                    somme = 0;
+                    for (var i = 0; i < saisie.length; i++)  
+                        somme += saisie.charCodeAt(i);
+                    somme = 1 + somme % 13;
+                }
+                else
+                {
+                    somme = '';
+                }
+                
+                document.getElementById( 'resultatMagique' ).innerHTML = somme; 
+            }
+        </script>
+    </head>
+    <body>
+            <div>   
+                <input  name="saisie"   id="saisie" placeholder="tape un calcul">
+                <br>
+                <button name='add'      id='add'     onclick="calcule()">ADD</button>
+                <br>
+                <button name='raz'      id='raz'     onclick="raz()">RAZ</button>
+                <div    name="resultat" id="resultat">0.00</div>
+            </div>        
+    </body>
+</html>
