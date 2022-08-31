@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            function majuscule()
+            {
+                saisie = document.getElementById( 'nom' ).value; 
+                saisie = saisie.toUpperCase();
+                document.getElementById( 'resultat' ).innerHTML = saisie; 
+            }
+            
+            function calcule()
+            {
+                saisie = document.getElementById( 'saisie' ).value; 
+                resultat = eval( saisie ) 
+                document.getElementById( 'res' ).innerHTML = resultat; 
+            }
+
+            function magie()
+            {
+                saisie = document.getElementById( 'motMagique' ).value; 
+                somme = 0;
+                for (var i = 0; i < saisie.length; i++) 
+                    somme += saisie.charCodeAt(i);
+                document.getElementById( 'resultatMagique' ).innerHTML = 1 + somme % 13; 
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <input  name="nom"      id="nom" placeholder="tape ton nom">
+            <button name='bouton'   id='bouton' onclick="majuscule()">UPPER</button>
+            <div    name="resultat" id="resultat">...</div>
+        </div>
+        <hr>
+            <div>   
+                <input  name="saisie"   id="saisie" placeholder="tape un calcul">
+                <button name='go'       id='go'     onclick="calcule()">GO !</button>
+                <div    name="res"      id="res">=</div>
+            </div>
+    
+        <hr>
+            <div>   
+                <div>NOMBRE MAGIQUE DE LA CHANCE CHANCEUSE (ou pas)<br>il additionne tous les codes ASCII du mot.<br>Fait un modulo 13 de cette somme.<br>Et ajoute 1.</div>
+                <input  id="motMagique" placeholder="tape un mot" onchange="magie()">
+                <div    id="resultatMagique"> </div>
+                <div>
+                    <br><br>
+                    tests pour le nombre magique<br>
+                <ul>
+                    <li>xavier  => 13</li>
+                    <li>Xavier  => 13</li>
+                    <li> '' => ''</li>
+                    <li>'&nbsp;&nbsp;&nbsp;&nbsp;' => ''</li>
+                    <li>'123' => ''</li>
+                </ul>
+                </div>                    
+            </div>
+        
+    </body>
+</html>
